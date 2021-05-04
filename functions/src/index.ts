@@ -30,21 +30,21 @@ function incrementMe(numb: number) {
   return ++numb;
 }
 
-// if (!req.body.numValue) {
-//   res.send("invalid");
-// } else res.send("increment");
-// const newNumber = incrementMe(req.body.numValue);
-// return admin
-//   .firestore()
-//   .collection("cloudData")
-//   .doc("cloudNumber-1")
-//   .set({
-//     numValue: newNumber,
-//   })
-//   .then(() => {
-//     console.log("New Message written");
-//     return newNumber;
-//   })
-//   .catch((error) => {
-//     throw new functions.https.HttpsError("unknown", error.message, error);
-//   });
+if (!req.body.numValue) {
+  res.send("invalid");
+} else res.send("increment");
+const newNumber = incrementMe(req.body.numValue);
+return admin
+  .firestore()
+  .collection("cloudData")
+  .doc("cloudNumber-1")
+  .set({
+    numValue: newNumber,
+  })
+  .then(() => {
+    console.log("New Message written");
+    return newNumber;
+  })
+  .catch((error) => {
+    throw new functions.https.HttpsError("unknown", error.message, error);
+  });
